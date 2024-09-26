@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="../css/output.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-gray-800 text-white">
+            <div class="p-4 text-center">
+                <h1 class="text-2xl font-bold mb-4">Open Admin</h1> 
+                <div class="mb-4">
+                <input type="text" placeholder="Search..." class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+            <nav class="px-2">
+                <ul>
+                    <li class="mb-2">
+                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-tachometer-alt mr-3"></i>
+                        Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" id="adminDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-shield mr-3"></i>
+                            Admin
+                        </div>
+                        <i id="adminArrow" class="fas fa-chevron-right"></i>
+                        </a>
+                        <ul id="adminDropdown" class="ml-4 hidden">
+                        <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Admin Settings</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">User Management</a></li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" id="helpersDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-tools mr-3"></i>
+                            Helpers
+                        </div>
+                        <i id="helpersArrow" class="fas fa-chevron-right"></i>
+                        </a>
+                        <ul id="helpersDropdown" class="ml-4 hidden">
+                        <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 1</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-photo-video mr-3"></i>
+                        Media Manager
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-cogs mr-3"></i>
+                        Config
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-flask mr-3"></i>
+                        API Tester
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-paint-brush mr-3"></i>
+                        Page Designer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="flex-1 p-6">
+            <h2 class="text-3xl font-semibold mb-6">Page List</h2>
+            <p>Main Content</p>
+        </div>
+    </div>
+
+    <script>
+        const adminToggle = document.getElementById('adminDropdownToggle');
+        const adminDropdown = document.getElementById('adminDropdown');
+        const adminArrow = document.getElementById('adminArrow');
+
+        adminToggle.addEventListener('click', function(event) {
+            event.preventDefault();
+            adminDropdown.classList.toggle('hidden');
+            adminArrow.classList.toggle('rotate-90'); 
+        });
+
+        const helpersToggle = document.getElementById('helpersDropdownToggle');
+        const helpersDropdown = document.getElementById('helpersDropdown');
+        const helpersArrow = document.getElementById('helpersArrow');
+
+        helpersToggle.addEventListener('click', function(event) {
+            event.preventDefault();
+            helpersDropdown.classList.toggle('hidden');
+            helpersArrow.classList.toggle('rotate-90');
+        });
+    </script>
+</body>
+</html>
