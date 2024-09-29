@@ -1,108 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link href="../css/output.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
-    <div class="flex min-h-screen">
-        <aside class="w-64 bg-gray-800 text-white">
-            <div class="p-4 text-center">
-                <h1 class="text-2xl font-bold mb-4">Open Admin</h1> 
-                <div class="mb-4">
-                <input type="text" placeholder="Search..." class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Admin Dashboard</title>
+            <link href="../css/output.css" rel="stylesheet">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        </head>
+        <body class="bg-gray-100">
+            <div class="flex min-h-screen">
+                <aside class="w-64 bg-gray-800 text-white">
+                    <div class="p-4 text-center">
+                        <h1 class="text-2xl font-bold mb-4">Open Admin</h1> 
+                        <div class="mb-4">
+                        <input type="text" placeholder="Search..." class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    <nav class="px-2">
+                        <ul>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                <i class="fas fa-tachometer-alt mr-3"></i>
+                                Dashboard
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" id="adminDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-user-shield mr-3"></i>
+                                    Admin
+                                </div>
+                                <i id="adminArrow" class="fas fa-chevron-right"></i>
+                                </a>
+                                <ul id="adminDropdown" class="ml-4 hidden">
+                                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Admin Settings</a></li>
+                                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">User Management</a></li>
+                                </ul>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" id="helpersDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-tools mr-3"></i>
+                                    Helpers
+                                </div>
+                                <i id="helpersArrow" class="fas fa-chevron-right"></i>
+                                </a>
+                                <ul id="helpersDropdown" class="ml-4 hidden">
+                                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 1</a></li>
+                                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                <i class="fas fa-photo-video mr-3"></i>
+                                Media Manager
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                <i class="fas fa-cogs mr-3"></i>
+                                Config
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                <i class="fas fa-flask mr-3"></i>
+                                API Tester
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                <i class="fas fa-paint-brush mr-3"></i>
+                                Page Designer
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside>
+                <div class="flex-1 p-6">
+                    <div class="flex-1 p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-3xl font-semibold text-black">Page List</h2>
+                            <div class="space-x-3">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-plus mr-2"></i> New
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-chart-bar mr-2"></i> Report
+                                </button>
+                                <button class="btn btn-accent">
+                                    <i class="fas fa-file-export mr-2"></i> Export
+                                </button>
+                                <button class="btn btn-info">
+                                    <i class="fas fa-sync-alt mr-2"></i> Refresh
+                                </button>
+                                <button class="btn btn-error">
+                                    <i class="fas fa-trash mr-2"></i> Delete All
+                                </button>
+                                <button id="selectionToolbar" class="btn btn-warning hidden">
+                                    <span id="selectedCount">0 </span> items selected
+                                </button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="table table-auto w-full">
+                                <thead>
+                                    <tr class="text-black text-lg font-bold">
+                                        <th>
+                                            <label>
+                                                <input type="checkbox" class="checkbox checkbox-primary" id="selectAll" onchange="toggleAllCheckboxes()">
+                                            </label>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Date</th>
+                                        <th>Tags</th>
+                                        <th>Star</th>
+                                        <th>Created at</th>
+                                        <th>Updated at</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-black text-lg">
+                                    <tr>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" class="rowCheckbox checkbox checkbox-primary" onclick="updateSelectedCount()">
+                                            </label>
+                                        </td>
+                                        <td>1</td>
+                                        <td>Homepage</td>
+                                        <td>2022-06-25</td>
+                                        <td>
+                                            <div class="flex space-x-1">
+                                            <span class="badge badge-primary">new</span>
+                                            <span class="badge badge-secondary">special</span>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <i class="fas fa-star text-2xl text-gray-400 cursor-pointer hover:text-yellow-500" data-id="1" onclick="toggleStar(this)"></i>
+                                        </td>
+                                        <td>2022-06-25 14:30:21</td>
+                                        <td>2022-06-25 14:37:40</td>
+                                        <td>
+                                            <div class="flex space-x-2">
+                                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye text-lg"></i></button>
+                                                <button class="btn btn-accent btn-sm"><i class="fas fa-edit text-lg"></i></button>
+                                                <button class="btn btn-error btn-sm"><i class="fas fa-trash text-lg"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" class="rowCheckbox checkbox checkbox-primary" onclick="updateSelectedCount()">
+                                            </label>
+                                        </td>
+                                        <td>2</td>
+                                        <td>About</td>
+                                        <td>2022-06-20</td>
+                                        <td>
+                                            <div class="flex space-x-1">
+                                                <span class="badge badge-warning">updated</span>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <i class="fas fa-star text-2xl text-gray-400 cursor-pointer hover:text-yellow-500" data-id="2" onclick="toggleStar(this)"></i>
+                                        </td>
+                                        <td>2022-06-20 10:00:00</td>
+                                        <td>2022-06-25 15:45:00</td>
+                                        <td>
+                                            <div class="flex space-x-2">
+                                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye text-lg"></i></button>
+                                                <button class="btn btn-accent btn-sm"><i class="fas fa-edit text-lg"></i></button>
+                                                <button class="btn btn-error btn-sm"><i class="fas fa-trash text-lg"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" class="rowCheckbox checkbox checkbox-primary" onclick="updateSelectedCount()">
+                                            </label>
+                                        </td>
+                                        <td>3</td>
+                                        <td>Contact</td>
+                                        <td>2022-06-18</td>
+                                        <td>
+                                            <div class="flex space-x-1">
+                                                <span class="badge badge-error">important</span>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <i class="fas fa-star text-2xl text-gray-400 cursor-pointer hover:text-yellow-500" data-id="3" onclick="toggleStar(this)"></i>
+                                        </td>
+                                        <td>2022-06-18 09:30:45</td>
+                                        <td>2022-06-25 16:20:30</td>
+                                        <td>
+                                            <div class="flex space-x-2">
+                                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye text-lg"></i></button>
+                                                <button class="btn btn-accent btn-sm"><i class="fas fa-edit text-lg"></i></button>
+                                                <button class="btn btn-error btn-sm"><i class="fas fa-trash text-lg"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <nav class="px-2">
-                <ul>
-                    <li class="mb-2">
-                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                        <i class="fas fa-tachometer-alt mr-3"></i>
-                        Dashboard
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" id="adminDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
-                        <div class="flex items-center">
-                            <i class="fas fa-user-shield mr-3"></i>
-                            Admin
-                        </div>
-                        <i id="adminArrow" class="fas fa-chevron-right"></i>
-                        </a>
-                        <ul id="adminDropdown" class="ml-4 hidden">
-                        <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Admin Settings</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">User Management</a></li>
-                        </ul>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" id="helpersDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
-                        <div class="flex items-center">
-                            <i class="fas fa-tools mr-3"></i>
-                            Helpers
-                        </div>
-                        <i id="helpersArrow" class="fas fa-chevron-right"></i>
-                        </a>
-                        <ul id="helpersDropdown" class="ml-4 hidden">
-                        <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 1</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 2</a></li>
-                        </ul>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                        <i class="fas fa-photo-video mr-3"></i>
-                        Media Manager
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                        <i class="fas fa-cogs mr-3"></i>
-                        Config
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                        <i class="fas fa-flask mr-3"></i>
-                        API Tester
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                        <i class="fas fa-paint-brush mr-3"></i>
-                        Page Designer
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
-        <div class="flex-1 p-6">
-            <h2 class="text-3xl font-semibold mb-6">Page List</h2>
-            <p>Main Content</p>
-        </div>
-    </div>
+            <script>
+                document.getElementById('adminDropdownToggle').addEventListener('click', function() {
+                    var adminDropdown = document.getElementById('adminDropdown');
+                    var adminArrow = document.getElementById('adminArrow');
+                    adminDropdown.classList.toggle('hidden');
+                    adminArrow.classList.toggle('fa-chevron-right');
+                    adminArrow.classList.toggle('fa-chevron-down');
+                });
 
-    <script>
-        const adminToggle = document.getElementById('adminDropdownToggle');
-        const adminDropdown = document.getElementById('adminDropdown');
-        const adminArrow = document.getElementById('adminArrow');
+                document.getElementById('helpersDropdownToggle').addEventListener('click', function() {
+                    var helpersDropdown = document.getElementById('helpersDropdown');
+                    var helpersArrow = document.getElementById('helpersArrow');
+                    helpersDropdown.classList.toggle('hidden');
+                    helpersArrow.classList.toggle('fa-chevron-right');
+                    helpersArrow.classList.toggle('fa-chevron-down');
+                });
 
-        adminToggle.addEventListener('click', function(event) {
-            event.preventDefault();
-            adminDropdown.classList.toggle('hidden');
-            adminArrow.classList.toggle('rotate-90'); 
-        });
+                function updateSelectedCount() {
+                    var checkboxes = document.querySelectorAll('.rowCheckbox');
+                    var selectionToolbar = document.getElementById('selectionToolbar');
+                    var selectedCount = document.getElementById('selectedCount');
+                    let count = 0;
+                    checkboxes.forEach(checkbox => {
+                        let row = checkbox.closest('tr');
+                        if (checkbox.checked) {
+                            row.classList.add('bg-gradient-to-r', 'from-primary', 'to-white');
+                            count++;
+                        } else {
+                            row.classList.remove('bg-gradient-to-r', 'from-primary', 'to-white');
+                        }
+                    });
+                    if (count > 0) {
+                        selectionToolbar.classList.remove('hidden');
+                        selectedCount.textContent = count;
+                    } else {
+                        selectionToolbar.classList.add('hidden');
+                    }
+                }
 
-        const helpersToggle = document.getElementById('helpersDropdownToggle');
-        const helpersDropdown = document.getElementById('helpersDropdown');
-        const helpersArrow = document.getElementById('helpersArrow');
+                function toggleAllCheckboxes() {
+                    const selectAllCheckbox = document.getElementById('selectAll');
+                    const rowCheckboxes = document.querySelectorAll('.rowCheckbox');
+                    rowCheckboxes.forEach(checkbox => {
+                        checkbox.checked = selectAllCheckbox.checked;
+                        let row = checkbox.closest('tr');
+                        if (checkbox.checked) {
+                            row.classList.add('bg-gradient-to-r', 'from-primary', 'to-white');
+                        } else {
+                            row.classList.remove('bg-gradient-to-r', 'from-primary', 'to-white');
+                        }
+                    });
+                    updateSelectedCount();
+                }
 
-        helpersToggle.addEventListener('click', function(event) {
-            event.preventDefault();
-            helpersDropdown.classList.toggle('hidden');
-            helpersArrow.classList.toggle('rotate-90');
-        });
-    </script>
-</body>
-</html>
+                function toggleStar(element) {
+                    element.classList.toggle('text-gray-400');
+                    element.classList.toggle('text-yellow-500');
+                }
+            </script>
+        </body>
+    </html>
