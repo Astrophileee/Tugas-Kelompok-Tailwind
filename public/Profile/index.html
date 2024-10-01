@@ -4,20 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web Profil</title>
-  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- DaisyUI -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.0.0/dist/full.css" rel="stylesheet">
-  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script>
-    // Script for dark/light mode toggle
+
     function toggleTheme() {
       const htmlElement = document.documentElement;
       const themeButton = document.getElementById('theme-button');
       const themeIcon = document.getElementById('theme-icon');
 
-      // Toggle the class and save to localStorage
+
       if (htmlElement.classList.contains('dark')) {
         htmlElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
@@ -30,7 +27,7 @@
         themeIcon.classList.add('fa-sun');
       }
 
-      // Change background and text color based on the theme
+
       updateThemeColors(htmlElement.classList.contains('dark'));
     }
 
@@ -41,7 +38,6 @@
       document.body.classList.toggle('text-white', isDark);
     }
 
-    // Load theme from local storage
     document.addEventListener('DOMContentLoaded', () => {
       const theme = localStorage.getItem('theme') || 'light';
       const themeIcon = document.getElementById('theme-icon');
@@ -56,14 +52,14 @@
         themeIcon.classList.add('fa-moon');
       }
 
-      // Apply initial theme colors
+
       updateThemeColors(htmlElement.classList.contains('dark'));
     });
 
-    // Logout function (simple placeholder)
+
     function logout() {
-      alert('Anda telah keluar dari aplikasi.'); // Show alert (you can customize this)
-      // Implement your logout logic here
+      alert('Anda telah keluar dari aplikasi.'); 
+
     }
   </script>
 </head>
@@ -80,11 +76,11 @@
         <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
       </ul>
       <div class="flex items-center mt-4 md:mt-0">
-        <!-- Dark Mode Toggle Button with Icon -->
+
         <button id="theme-button" onclick="toggleTheme()" class="btn btn-sm btn-outline text-white transition-colors duration-300 flex items-center">
           <i id="theme-icon" class="fas fa-moon"></i>
         </button>
-        <!-- Logout Button -->
+
         <button onclick="logout()" class="btn btn-sm btn-outline text-white ml-2 transition-colors duration-300 hover:bg-red-500 hover:text-white">
           Keluar
         </button>
@@ -92,9 +88,9 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
+
   <div class="container mx-auto py-12 px-4">
-    <!-- Profile Section -->
+
     <section id="about" class="text-center my-12">
       <div class="w-32 h-32 mx-auto rounded-full border-4 border-blue-500 dark:border-yellow-400 mb-4"></div>
       <h2 class="text-4xl font-bold text-blue-600 dark:text-yellow-400">Anonimus Bercanda</h2>
@@ -105,11 +101,11 @@
     </p>
     </section>
 
-    <!-- Skills Section -->
+
     <section id="skills" class="mt-12">
       <h2 class="text-3xl font-bold text-center text-blue-600 dark:text-yellow-400 mb-8">Bidang Keahlian</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- HTML Skill -->
+
         <div class="card shadow-md bg-gray-700 dark:bg-gray-900 p-6 rounded-lg">
           <h3 class="text-2xl font-bold text-blue-600 dark:text-yellow-400 mb-2">HTML</h3>
           <p class="text-gray-300 dark:text-gray-200">Penguasaan dalam membangun struktur website dengan HTML5.
@@ -117,7 +113,6 @@
           </p>
         </div>
 
-        <!-- CSS & Tailwind Skill -->
         <div class="card shadow-md bg-gray-700 dark:bg-gray-900 p-6 rounded-lg">
           <h3 class="text-2xl font-bold text-blue-600 dark:text-yellow-400 mb-2">CSS & Tailwind</h3>
           <p class="text-gray-300 dark:text-gray-200">Kemampuan styling website modern dengan CSS dan Tailwind CSS.
@@ -126,7 +121,6 @@
           
         </div>
 
-        <!-- JavaScript Skill -->
         <div class="card shadow-md bg-gray-700 dark:bg-gray-900 p-6 rounded-lg">
           <h3 class="text-2xl font-bold text-blue-600 dark:text-yellow-400 mb-2">JavaScript</h3>
           <p class="text-gray-300 dark:text-gray-200">Pengalaman dalam membangun fitur interaktif menggunakan JavaScript.
@@ -136,14 +130,12 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="text-center mt-12">
       <h2 class="text-3xl font-bold text-blue-600 dark:text-yellow-400 mb-8">Hubungi Saya</h2>
       <a href="mailto:your-email@example.com" class="btn btn-primary">Email Saya</a>
     </section>
   </div>
 
-  <!-- Footer -->
   <footer class="bg-gray-700 dark:bg-gray-900 text-white p-4 text-center">
     &copy; 2024 Bercanda. All rights reserved.
   </footer>
