@@ -15,73 +15,85 @@
                     <i id="mobileMenuToggle" class="fas fa-bars"></i>
                 </button>
             </header>
-            <aside id="sidebar" class="w-full lg:w-64 bg-gray-800 text-white hidden lg:block">
-                <div class="p-4 text-center">
-                    <h1 class="text-2xl font-bold mb-4 hidden lg:block">Open Admin</h1> 
-                    <div class="mb-4">
-                        <input type="text" placeholder="Search..." class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <aside id="sidebar" class="w-full lg:w-64 bg-gray-800 text-white hidden lg:flex lg:flex-col lg:justify-between">
+                <div>
+                    <div class="p-4 text-center">
+                        <h1 class="text-2xl font-bold mb-4 hidden lg:block">Open Admin</h1>
+                        <div class="mb-4">
+                            <input type="text" placeholder="Search..." class="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
                     </div>
+                    <nav class="px-2">
+                        <ul>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                    <i class="fas fa-tachometer-alt mr-3"></i>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" id="adminDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-user-shield mr-3"></i>
+                                        Admin
+                                    </div>
+                                    <i id="adminArrow" class="fas fa-chevron-right"></i>
+                                </a>
+                                <ul id="adminDropdown" class="ml-4 hidden">
+                                    <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Admin Settings</a></li>
+                                    <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">User Management</a></li>
+                                </ul>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" id="helpersDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-tools mr-3"></i>
+                                        Helpers
+                                    </div>
+                                    <i id="helpersArrow" class="fas fa-chevron-right"></i>
+                                </a>
+                                <ul id="helpersDropdown" class="ml-4 hidden">
+                                    <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 1</a></li>
+                                    <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                    <i class="fas fa-photo-video mr-3"></i>
+                                    Media Manager
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                    <i class="fas fa-cogs mr-3"></i>
+                                    Config
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                    <i class="fas fa-flask mr-3"></i>
+                                    API Tester
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                                    <i class="fas fa-paint-brush mr-3"></i>
+                                    Page Designer
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                <nav class="px-2">
-                    <ul>
-                        <li class="mb-2">
-                            <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                                <i class="fas fa-tachometer-alt mr-3"></i>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" id="adminDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
-                            <div class="flex items-center">
-                                <i class="fas fa-user-shield mr-3"></i>
-                                Admin
-                            </div>
-                            <i id="adminArrow" class="fas fa-chevron-right"></i>
-                            </a>
-                            <ul id="adminDropdown" class="ml-4 hidden">
-                            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Admin Settings</a></li>
-                            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">User Management</a></li>
-                            </ul>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" id="helpersDropdownToggle" class="flex justify-between py-2 px-4 rounded hover:bg-gray-700 items-center">
-                            <div class="flex items-center">
-                                <i class="fas fa-tools mr-3"></i>
-                                Helpers
-                            </div>
-                            <i id="helpersArrow" class="fas fa-chevron-right"></i>
-                            </a>
-                            <ul id="helpersDropdown" class="ml-4 hidden">
-                            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 1</a></li>
-                            <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Helper 2</a></li>
-                            </ul>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                            <i class="fas fa-photo-video mr-3"></i>
-                            Media Manager
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                            <i class="fas fa-cogs mr-3"></i>
-                            Config
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                            <i class="fas fa-flask mr-3"></i>
-                            API Tester
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
-                            <i class="fas fa-paint-brush mr-3"></i>
-                            Page Designer
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="p-4">
+                    <div class="flex items-center mb-4">
+                        <img src="./src/iqbal.jpg" alt="Admin Photo" class="w-10 h-10 rounded-full mr-2">
+                        <span class="text-lg font-semibold">Admin Name</span>
+                    </div>
+                    <a href="#" class="py-2 px-4 rounded hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-sign-out-alt mr-3"></i>
+                        Logout
+                    </a>
+                </div>
             </aside>
             <div class="flex-1 p-6 overflow-x-auto">
                 <div class="mb-6">
