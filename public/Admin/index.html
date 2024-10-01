@@ -109,7 +109,7 @@
                 </div>
                 <div class="overflow-x-auto">
                     <table class="table table-auto w-full">
-                        <thead>
+                        <thead class="text-center">
                             <tr class="text-black text-lg font-bold">
                                 <th>
                                     <label>
@@ -237,10 +237,10 @@
                 checkboxes.forEach(checkbox => {
                     let row = checkbox.closest('tr');
                     if (checkbox.checked) {
-                        row.classList.add('bg-gradient-to-r', 'from-primary', 'to-white');
+                        row.classList.add('bg-gradient-to-r', 'from-primary', 'to-gray-100');
                         count++;
                     } else {
-                        row.classList.remove('bg-gradient-to-r', 'from-primary', 'to-white');
+                        row.classList.remove('bg-gradient-to-r', 'from-primary', 'to-gray-100');
                     }
                 });
                 if (count > 0) {
@@ -257,9 +257,9 @@
                     checkbox.checked = selectAllCheckbox.checked;
                     let row = checkbox.closest('tr');
                     if (checkbox.checked) {
-                        row.classList.add('bg-gradient-to-r', 'from-primary', 'to-white');
+                        row.classList.add('bg-gradient-to-r', 'from-primary', 'to-gray-100');
                     } else {
-                        row.classList.remove('bg-gradient-to-r', 'from-primary', 'to-white');
+                        row.classList.remove('bg-gradient-to-r', 'from-primary', 'to-gray-100');
                     }
                 });
                 updateSelectedCount();

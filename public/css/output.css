@@ -1934,6 +1934,10 @@ html {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.to-gray-100 {
+  --tw-gradient-to: #f3f4f6 var(--tw-gradient-to-position);
+}
+
 .to-white {
   --tw-gradient-to: #fff var(--tw-gradient-to-position);
 }
